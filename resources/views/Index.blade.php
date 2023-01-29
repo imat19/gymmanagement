@@ -55,18 +55,22 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {{-- @if (count($members) > 0) --}}
                           @foreach ($members as $member)
                             <tr>                        
                                 <td>{{$member->name}}</td>
                                 <td>{{$member->email}}</td>
                                 <td>{{$member->membershipType}}</td>
-                                <td>{{$member->membershipExpiration}}</td>
+                                <td>{{$member->membershipExpiration}}</td>         
                                 <td>
-                                    <a href="{{route('edit')}}" class="btn btn-info btn-sm">Update</a>
+                                    <a href="{{route('edit',$member->id)}}" class="btn btn-info btn-sm">Update</a>
                                     <a href="{{route('deletemember', $member->id)}}" class="btn btn-danger btn-sm">Delete</a>
                                 </td>
                             </tr>
                      @endforeach
+                     {{-- @else                    
+                     <h1>No Member Available</h1>
+                     @endif --}}
                         </tbody>
                     </table>
                 </div>
